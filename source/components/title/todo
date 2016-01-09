@@ -1,0 +1,19 @@
+
+## login form
+
+Connects to koa api.
+Can create user.
+Can log in without refresh
+Form validates 
+Vanilla JS
+
+If ajax login fails, alert. On log in, redirect
+
+
+
+run koa api on heroku.
+plug into front-end on surge.
+
+
+
+Originally, I was just curious to try doing stuff without jq. That was my motivation

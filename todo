@@ -1,0 +1,19 @@
+
+/// Recipe Box
+
+/ Components
+
+Recipe shower which opens + closes
+Add recipe modal with button
+
+
+/ Component Heirarchy
+
+RecipeBox
+  RecipeTable
+    RecipeRow
+      IngredientsTable
+        IngredientsRow
+      Options
+  AddRecipe
+    AddRecipeDialog
