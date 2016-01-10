@@ -13,15 +13,14 @@ store.subscribe(() => {
   console.log(store.getState())
 })
 
-export default React => ({ foo, ...props }) => {
+export default React => ({ foo, recipes, ...props }) => {
   const Title = createTitle(React)
   const Hello = createHello(React)
   const RecipeBox = createRecipeBox(React)
-  const helloProps = {
-    ...props,
-    actions: {
-      setMode
-    }
+  const helloProps =
+  { ...props
+  , actions:
+    { setMode }
   }
 
   return (
@@ -30,7 +29,7 @@ export default React => ({ foo, ...props }) => {
       <Hello { ...helloProps } />
       <p>Content goes here: { foo }</p>
 
-      <RecipeBox />
+      <RecipeBox recipes={ recipes } />
     </div>
   )
 }

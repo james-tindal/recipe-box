@@ -45,7 +45,7 @@
     "camelcase": [0],
     "comma-dangle": [0],
     "comma-spacing": [2],
-    "comma-style": [2, "last"],
+    "comma-style": [2, "first"],
     "complexity": [0, 11],
     "consistent-return": [2],
     "consistent-this": [0, "that"],

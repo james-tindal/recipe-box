@@ -1,10 +1,27 @@
 
-/// Recipe Box
 
-/ Components
 
-Recipe shower which opens + closes
-Add recipe modal with button
+
+
+
+
+
+
+
+    Add recipe modal
+
+
+
+
+
+
+
+
+
+
+
+
+Make it save to local storage / server
 
 
 / Component Heirarchy
@@ -13,7 +30,5 @@ RecipeBox
   RecipeTable
     RecipeRow
       IngredientsTable
-        IngredientsRow
       Options
-  AddRecipe
-    AddRecipeDialog
+  RecipeDialog

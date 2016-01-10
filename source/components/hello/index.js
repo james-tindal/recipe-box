@@ -1,4 +1,4 @@
-export default React => {
+export default React => { 
 
   const {
     string, shape, func

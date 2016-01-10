@@ -1,15 +1,17 @@
-import { Well } from 'react-bootstrap'
-import createRecipeTable from 'components/recipebox/RecipeTable'
-import createAddRecipe from 'components/recipebox/addrecipe'
+import { Button } from 'react-bootstrap'
+import createRecipeTable from 'components/recipebox/recipetable'
+import createRecipeDialog from 'components/recipebox/recipedialog'
 
-export default React => ({props}) => {
+export default React => ({ recipes }) => {
   const RecipeTable = createRecipeTable(React)
-  const AddRecipe = createAddRecipe(React)
+  const RecipeDialog = createRecipeDialog(React)
 
   return (
-    <Well>
-      <RecipeTable />
-      <AddRecipe />
-    </Well>
+    <div>
+      <RecipeTable recipes={recipes} />
+      <Button bsStyle="primary">Add Recipe</Button>
+
+      <RecipeDialog />
+    </div>
   )
 }

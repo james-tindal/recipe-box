@@ -8,9 +8,9 @@ const Title = createTitle(React)
 
 test('Title', assert => {
   const titleText = 'Hello!'
-  const props = {
-    title: titleText,
-    titleClass: 'title'
+  const props =
+  { title: titleText
+  , titleClass: 'title'
   }
   const re = new RegExp(titleText, 'g')
   const $ = shallow(<Title { ...props } />)
