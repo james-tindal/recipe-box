@@ -1,11 +1,14 @@
 import { Button, ButtonToolbar } from 'react-bootstrap'
 
-export default React => ({ recipeId }) => {
+export default React => {
 
-  return (
+  const Options = ({ id }, { store }) => (
     <ButtonToolbar>
-      <Button bsStyle="danger">Delete</Button>
-      <Button>Edit</Button>
-    </ButtonToolbar>
-  )
+      <Button onClick={ () => store.dispatch({ type: 'DELETE_RECIPE', id: id }) } bsStyle="danger">Delete</Button>
+      <Button onClick={ () => store.dispatch({ type: 'SHOW_RECIPE_DIALOG', action: 'edit', id }) }>Edit</Button>
+    </ButtonToolbar> )
+
+  Options.contextTypes = { store: React.PropTypes.object }
+
+  return Options
 }

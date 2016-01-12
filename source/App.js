@@ -1,35 +1,20 @@
-import { createStore } from 'redux'
-
-import hello from 'store/reducers/hello'
 import createTitle from 'components/title'
-import createHello from 'components/hello'
 import createRecipeBox from 'components/recipebox'
 
-const store = createStore(hello)
-
-const setMode = (mode) => store.dispatch({ type: 'SET_MODE', mode })
-
-store.subscribe(() => {
-  console.log(store.getState())
-})
-
-export default React => ({ foo, recipes, ...props }) => {
+export default React => {
   const Title = createTitle(React)
-  const Hello = createHello(React)
   const RecipeBox = createRecipeBox(React)
-  const helloProps =
-  { ...props
-  , actions:
-    { setMode }
+
+  const App = ({ store, state, title }) => {
+    App.prototype.getChildContext = () => ({ store })
+    App.childContextTypes = { store: React.PropTypes.object }
+
+    console.log(state);
+    App.prototype.render = () =>
+      <div className="content container">
+        <Title title={ title } />
+        <RecipeBox { ...state } />
+      </div>
   }
-
-  return (
-    <div className="content container">
-      <Title { ...props } />
-      <Hello { ...helloProps } />
-      <p>Content goes here: { foo }</p>
-
-      <RecipeBox recipes={ recipes } />
-    </div>
-  )
+  return App
 }

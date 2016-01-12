@@ -1,29 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-    Add recipe modal
-
-
-
-
-
-
-
-
-
-
-
-
-Make it save to local storage / server
-
-
 / Component Heirarchy
 
 RecipeBox
@@ -32,3 +8,27 @@ RecipeBox
       IngredientsTable
       Options
   RecipeDialog
+
+
+/ Minimal reperesentation of state as an object
+
+{ showRecipeDialog: 'edit' / 'create' / false
+, recipes:
+  [
+    { 
+    , 
+    }
+  , {
+    ,
+    }
+  ]
+}
+
+
+
+Somehow I need to put recipes in state 
+
+Where is state?
+
+
+In the future, create a function to abstract the craziness of reduce()

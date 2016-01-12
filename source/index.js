@@ -2,31 +2,44 @@
 import { render } from 'react-dom'
 import createApp from './App'
 
-const App = createApp(React)
+import { createStore } from 'redux'
+import recipeBox from 'store/reducers/recipebox'
 
-const recipes =
-[ { id: 0
-  , name: 'Cake'
-  , ingredients: [ 'Butter', 'Sugar', 'Eggs', 'Flour' ]
-  }
-, { id: 1
-  , name: 'Salad'
-  , ingredients: [ 'Kale', 'Quinoa', 'Aubergine' ]
-  }
-, { id: 3
-  , name: 'Pizza'
-  , ingredients: [ 'Flour', 'Water', 'Yeast', 'Passata', 'Cheese']
-  }
-]
-
-const props =
-{ foo: 'yay!  🎸🎶'
-, recipes: recipes
-, title: 'Recipe Box'
-, helloClass: 'hello'
+const initialState =
+{ dialog:
+  { show: false }
+, recipes:
+  [ { id: 0
+    , name: 'Cake'
+    , ingredients: [ 'Butter', 'Sugar', 'Eggs', 'Flour' ]
+    }
+  , { id: 1
+    , name: 'Salad'
+    , ingredients: [ 'Kale', 'Quinoa', 'Aubergine' ]
+    }
+  , { id: 3
+    , name: 'Pizza'
+    , ingredients: [ 'Flour', 'Water', 'Yeast', 'Passata', 'Cheese']
+    }
+  ]
 }
 
-render(
-  <App { ...props }></App>,
-  document.getElementById('root')
-)
+const store = createStore(recipeBox, initialState)
+const App = createApp(React)
+
+const renderApp = (state) => {
+  const props =
+  { store, state
+  , title: 'Recipe Box'
+  }
+  render(
+    <App { ...props }></App>,
+    document.getElementById('root')
+  )
+}
+
+store.subscribe(() => {
+  console.log(store.getState());
+  renderApp(store.getState())
+})
+renderApp(initialState)
