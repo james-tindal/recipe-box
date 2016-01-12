@@ -1,15 +1,18 @@
 /* global React */ // change to turn off react rule
 import { Button, Input, Modal } from 'react-bootstrap'
-const { bool, object, string } = React.PropTypes
 const assign = (a, b) => Object.assign({}, a, b)
 
 const RecipeDialog = ({ show, action, recipe = {} }, { store }) => {
   const close = () => store.dispatch({ type: 'HIDE_RECIPE_DIALOG'})
   const post = () => {
-    const recipeN = assign(recipe, { name: RecipeDialog.name, ingredients: RecipeDialog.ingredients })
+    const recipeN = assign(recipe,
+    { name: RecipeDialog.recipe.getValue()
+    , ingredients: RecipeDialog.ingredients.getValue().split(',')
+    })
     store.dispatch(
     { type: action === 'edit' ? 'EDIT_RECIPE' : 'ADD_RECIPE'
-    , recipeN } )
+    , recipe: recipeN } )
+    close()
   }
 
   return (
@@ -24,13 +27,13 @@ const RecipeDialog = ({ show, action, recipe = {} }, { store }) => {
             type="text"
             label="Recipe"
             placeholder="Recipe name"
-            value={ recipe.name }
-            ref={ref => RecipeDialog.name = ref} />
+            defaultValue={ recipe.name } autoFocus
+            ref={ref => RecipeDialog.recipe = ref } />
           <Input
             type="text"
             label="Ingredients"
             placeholder="Enter ingredients, separated by commas"
-            value={ recipe.ingredients }
+            defaultValue={ recipe.ingredients }
             ref={ref => RecipeDialog.ingredients = ref} />
         </form>
       </Modal.Body>
@@ -46,7 +49,6 @@ const RecipeDialog = ({ show, action, recipe = {} }, { store }) => {
     </Modal> )
 }
 
-RecipeDialog.contextTypes = { store: object }
-RecipeDialog.propTypes = { show: bool.isRequired, action: string.isRequired, recipe: object.isRequired }
+RecipeDialog.contextTypes = { store: React.PropTypes.object }
 
 export default React => RecipeDialog

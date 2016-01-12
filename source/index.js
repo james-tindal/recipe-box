@@ -2,6 +2,7 @@
 import { render } from 'react-dom'
 import createApp from './App'
 
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import recipeBox from 'store/reducers/recipebox'
 
@@ -39,7 +40,7 @@ const renderApp = (state) => {
 }
 
 store.subscribe(() => {
-  console.log(store.getState());
   renderApp(store.getState())
 })
+
 renderApp(initialState)
