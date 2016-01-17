@@ -1,2 +1,2 @@
-export default React => ({ titleClass, title }) =>
-  <h1 className={ titleClass }>{ title }</h1>
+export default React => ({ titleClass, children }) =>
+  <h1 className={ titleClass }>{ children }</h1>
