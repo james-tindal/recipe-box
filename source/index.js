@@ -30,12 +30,14 @@ const App = createApp(React)
 
 const renderApp = (state) => {
   const props =
-  { store, state
+  { state
   , title: 'Recipe Box'
   }
   render(
-    <App { ...props }></App>,
-    document.getElementById('root')
+    <Provider store={ store }>
+      <App { ...props }></App>
+    </Provider>
+    , document.getElementById('root')
   )
 }
 
