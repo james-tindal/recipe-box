@@ -7,37 +7,14 @@
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "set NODE_PATH='source' && node devServer.js",
-    "debug": "set NODE_PATH='source' echo 'Nothing? `npm install -g iron-node`' && iron-node source/debug.js",
-    "lint": "eslint source",
-    "pretest": "npm run lint",
     "test": "set NODE_PATH='source' babel-node source/test/index.js",
     "watch": "watch 'npm run test -s' source",
     "update": "updtr"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gaearon/react-transform-boilerplate.git"
-  },
-  "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack",
-    "babel",
-    "react-transform"
-  ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "James Brown",
   "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/gaearon/react-transform-boilerplate/issues"
-  },
-  "homepage": "https://github.com/gaearon/react-transform-boilerplate",
   "devDependencies": {
+    "ava": "^0.10.0",
     "babel-cli": "6.4.0",
     "babel-core": "6.4.0",
     "babel-eslint": "4.1.6",
@@ -53,14 +30,12 @@
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.14.0",
     "express": "4.13.3",
-    "faucet": "0.0.1",
     "jsdom": "7.2.2",
     "react-addons-test-utils": "0.14.6",
     "react-dom": "0.14.6",
     "redbox-react": "1.2.0",
     "redux": "3.0.5",
     "rimraf": "2.5.0",
-    "tape": "4.4.0",
     "updtr": "0.1.6",
     "watch": "0.17.1",
     "webpack": "1.12.10",
@@ -70,6 +45,20 @@
   "dependencies": {
     "react": "0.14.6",
     "react-dom": "0.14.3",
-    "react-redux": "^4.0.6"
+    "react-redux": "^4.0.6",
+    "react-bootstrap": "^0.28.2"
+  },
+  "ava": {
+    "files": [
+      "source/test/**/*.js",
+      "!**/not-this-file.js"
+    ],
+    "failFast": true,
+    "serial": true,
+    "tap": true,
+    "verbose": true,
+    "require": [
+      "babel-core/register"
+    ]
   }
 }
