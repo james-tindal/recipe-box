@@ -6,18 +6,18 @@ export default React => {
   const RecipeTable = createRecipeTable(React)
   const RecipeDialog = createRecipeDialog(React)
 
-  const RecipeBox = ({ recipes, dialog }, { store } ) =>
+  const RecipeBox = ({ recipes, dialog }, { dispatch }) =>
     <div>
       <RecipeTable recipes={recipes} />
       <Button
         bsStyle="primary"
-        onClick={ () => store.dispatch({ type: 'SHOW_RECIPE_DIALOG', action: 'add' }) }
+        onClick={ () => dispatch({ type: 'SHOW_RECIPE_DIALOG', action: 'add' }) }
       >Add Recipe</Button>
 
       <RecipeDialog { ...dialog }/>
     </div>
 
-  RecipeBox.contextTypes = { store: React.PropTypes.object }
+  RecipeBox.contextTypes = { dispatch: React.PropTypes.func }
 
   return RecipeBox
 }

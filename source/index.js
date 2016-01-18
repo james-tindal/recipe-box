@@ -2,7 +2,7 @@
 import { render } from 'react-dom'
 import createApp from './App'
 
-import { Provider } from 'react-redux'
+import createProvider from 'provider'
 import { createStore } from 'redux'
 import recipeBox from 'store/reducers/recipebox'
 
@@ -27,14 +27,15 @@ const initialState =
 
 const store = createStore(recipeBox, initialState)
 const App = createApp(React)
+const Provider = createProvider(React)
 
-const renderApp = (state) => {
+const renderApp = () => {
   const props =
-  { state
+  { store
   , title: 'Recipe Box'
   }
   render(
-    <Provider store={ store }>
+    <Provider dispatch={ store.dispatch }>
       <App { ...props }></App>
     </Provider>
     , document.getElementById('root')
@@ -42,7 +43,7 @@ const renderApp = (state) => {
 }
 
 store.subscribe(() => {
-  renderApp(store.getState())
+  renderApp()
 })
 
-renderApp(initialState)
+renderApp()

@@ -2,14 +2,14 @@
 import { Button, Input, Modal } from 'react-bootstrap'
 const assign = (a, b) => Object.assign({}, a, b)
 
-const RecipeDialog = ({ show, action, recipe = {} }, { store }) => {
-  const close = () => store.dispatch({ type: 'HIDE_RECIPE_DIALOG'})
+const RecipeDialog = ({ show, action, recipe = {} }, { dispatch }) => {
+  const close = () => dispatch({ type: 'HIDE_RECIPE_DIALOG'})
   const post = () => {
     const recipeN = assign(recipe,
     { name: RecipeDialog.recipe.getValue()
     , ingredients: RecipeDialog.ingredients.getValue().split(',')
     })
-    store.dispatch(
+    dispatch(
     { type: action === 'edit' ? 'EDIT_RECIPE' : 'ADD_RECIPE'
     , recipe: recipeN } )
     close()
@@ -49,6 +49,6 @@ const RecipeDialog = ({ show, action, recipe = {} }, { store }) => {
     </Modal> )
 }
 
-RecipeDialog.contextTypes = { store: React.PropTypes.object }
+RecipeDialog.contextTypes = { dispatch: React.PropTypes.func }
 
 export default React => RecipeDialog
