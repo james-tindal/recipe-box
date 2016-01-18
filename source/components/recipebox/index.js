@@ -1,12 +1,13 @@
 import { Button } from 'react-bootstrap'
+import context from 'contextFactory'
 import createRecipeTable from 'components/recipebox/recipetable'
 import createRecipeDialog from 'components/recipebox/recipedialog'
 
-export default React => {
+export default React => context( ({ recipes, dialog }, { dispatch }) => {
   const RecipeTable = createRecipeTable(React)
   const RecipeDialog = createRecipeDialog(React)
 
-  const RecipeBox = ({ recipes, dialog }, { dispatch }) =>
+  return (
     <div>
       <RecipeTable recipes={recipes} />
       <Button
@@ -15,9 +16,5 @@ export default React => {
       >Add Recipe</Button>
 
       <RecipeDialog { ...dialog }/>
-    </div>
-
-  RecipeBox.contextTypes = { dispatch: React.PropTypes.func }
-
-  return RecipeBox
-}
+    </div> )
+})

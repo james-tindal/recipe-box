@@ -1,9 +1,10 @@
 /* global React */ // change to turn off react rule
 import { Button, Input, Modal } from 'react-bootstrap'
+import context from 'contextFactory'
 const assign = (a, b) => Object.assign({}, a, b)
 
 const RecipeDialog = ({ show, action, recipe = {} }, { dispatch }) => {
-  const close = () => dispatch({ type: 'HIDE_RECIPE_DIALOG'})
+  const close = () => dispatch({ type: 'HIDE_RECIPE_DIALOG' })
   const post = () => {
     const recipeN = assign(recipe,
     { name: RecipeDialog.recipe.getValue()
@@ -49,6 +50,4 @@ const RecipeDialog = ({ show, action, recipe = {} }, { dispatch }) => {
     </Modal> )
 }
 
-RecipeDialog.contextTypes = { dispatch: React.PropTypes.func }
-
-export default React => RecipeDialog
+export default React => context( RecipeDialog )
