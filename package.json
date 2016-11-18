@@ -1,18 +1,16 @@
 {
-  "name": "react-transform-boilerplate",
-  "version": "2.2.0",
-  "description": "A new Webpack boilerplate with hot reloading React components, and error handling on module and component level.",
+  "name": "recipe-box",
+  "version": "0.0.0",
+  "description": "",
   "scripts": {
-    "clean": "rimraf build",
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "set NODE_PATH='source' && node devServer.js",
     "test": "set NODE_PATH='source' babel-node source/test/index.js",
-    "watch": "watch 'npm run test -s' source",
-    "update": "updtr"
+    "watch": "watch 'npm run test -s' source"
   },
   "author": "James Brown",
-  "license": "CC0-1.0",
+  "license": "",
   "devDependencies": {
     "ava": "^0.10.0",
     "babel-cli": "6.4.0",
